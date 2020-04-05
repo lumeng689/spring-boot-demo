@@ -1,0 +1,8 @@
+[0.003s][warning][gc] -XX:+PrintGCDetails is deprecated. Will use -Xlog:gc* instead.
+[0.516s][info   ][gc] Using G1
+[0.546s][info   ][gc] Periodic GC disabled
+[1.015s][info   ][gc] GC(0) Pause Young (Concurrent Start) (G1 Humongous Allocation) 14M->12M(20M) 3.686ms
+[1.015s][info   ][gc] GC(1) Concurrent Cycle
+[1.018s][info   ][gc] GC(1) Pause Remark 18M->18M(20M) 0.384ms
+[1.019s][info   ][gc] GC(1) Pause Cleanup 18M->18M(20M) 0.036ms
+[1.020s][info   ][gc] GC(1) Concurrent Cycle 4.415ms
