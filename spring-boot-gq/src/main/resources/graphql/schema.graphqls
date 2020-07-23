@@ -1,0 +1,37 @@
+
+
+# 定义Book对象的结构
+#type Book {
+#  id: ID
+#  name: String
+#  pageCount: Int
+#  author: Author
+#  category: Category
+#}
+
+# 定义Category对象的结构
+#type Category {
+#  id: ID
+#  name: String
+#}
+
+type Query {
+  getRecentPosts(count: Int, offset:Int): [Post]!
+  findOneAuthor(id: String!): Author!
+}
+
+# 定义Post
+type Post {
+  id: String
+  title: String
+  text: String
+  category: String
+  authorId: String
+}
+
+# 定义Author对象的结构
+type Author {
+  id: String
+  name: String
+  thumbnail: String
+}
