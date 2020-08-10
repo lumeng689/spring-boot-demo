@@ -1,0 +1,12 @@
+package org.luapp.tpl.bean
+
+import org.luapp.tpl.vo.People
+
+dialect "java"
+
+rule "man"
+    when
+        $p:People(gender == "1" && drlType == "people")
+    then
+        System.out.println($p.getName() + "是男士");
+end
