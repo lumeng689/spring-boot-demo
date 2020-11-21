@@ -6,7 +6,7 @@
     <groupId>org.luapp</groupId>
     <artifactId>spring-boot-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>spring-boot-demo</name>
     <description>Demo project for Spring Boot</description>
@@ -42,6 +42,7 @@
         <module>spring-boot-thymeleaf</module>
         <module>spring-cloud-function</module>
         <module>xunwu</module>
+        <module>netty-rpc</module>
     </modules>
 
     <dependencies>
