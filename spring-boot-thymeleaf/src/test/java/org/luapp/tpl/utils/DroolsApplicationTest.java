@@ -1,8 +1,8 @@
 package org.luapp.tpl.utils;
 
-import org.junit.Test;
+//import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.runner.RunWith;
+//import org.junit.runner.RunWith;
 import org.kie.api.KieBase;
 import org.kie.api.runtime.KieSession;
 import org.luapp.tpl.vo.People;
@@ -19,7 +19,7 @@ import java.sql.SQLOutput;
  * @create: 2020/07/27
  **/
 @SpringBootTest
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 public class DroolsApplicationTest {
 
     private final static Logger logger = LoggerFactory.getLogger(DroolsApplicationTest.class);
@@ -36,7 +36,7 @@ public class DroolsApplicationTest {
         session.dispose();//释放资源
     }
 
-    @Test
+//    @Test
     public void people() {
         People people = new People();
         people.setName("达");

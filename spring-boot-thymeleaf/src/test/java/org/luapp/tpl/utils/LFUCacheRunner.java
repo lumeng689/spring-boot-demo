@@ -1,8 +1,8 @@
 package org.luapp.tpl.utils;
 
-import org.junit.runner.JUnitCore;
-import org.junit.runner.Result;
-import org.junit.runner.notification.Failure;
+//import org.junit.runner.JUnitCore;
+//import org.junit.runner.Result;
+//import org.junit.runner.notification.Failure;
 
 /**
  * @author: 86150
@@ -10,12 +10,12 @@ import org.junit.runner.notification.Failure;
  **/
 public class LFUCacheRunner {
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(LFUCacheTest.class);
+//        Result result = JUnitCore.runClasses(LFUCacheTest.class);
 
-        System.out.printf("Run count: %d, fail count: %d\n", result.getRunCount(), result.getFailureCount());
+//        System.out.printf("Run count: %d, fail count: %d\n", result.getRunCount(), result.getFailureCount());
 
-        for (Failure failure : result.getFailures()) {
-            System.out.println(failure);
-        }
+//        for (Failure failure : result.getFailures()) {
+//            System.out.println(failure);
+//        }
     }
 }
