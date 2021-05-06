@@ -9,6 +9,8 @@ import java.util.List;
  * @create: 2021/05/01
  **/
 public class Util {
+
+
     public static void printArray(int[] ret) {
         if (ret == null || ret.length <= 0) {
             System.out.println("");
@@ -29,12 +31,33 @@ public class Util {
         System.out.println("* * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
     }
 
-    public static void printNestList(List<List<Integer>> lists) {
-        for (List<Integer> subList : lists) {
-            for (int i : subList) {
-                System.out.println(i + "\t");
+    public static <T> void printNestList(List<List<T>> lists) {
+        for (List<T> subList : lists) {
+            for (Object i : subList) {
+                System.out.print(i + "\t");
             }
             System.out.println();
         }
+    }
+
+    public static TreeNode buildFromArray(Integer[] nodes) {
+        TreeNode root = cursiveBuildTree(nodes, 0);
+        return root;
+    }
+
+    private static TreeNode cursiveBuildTree(Integer[] nodes, int startIdx) {
+        if (startIdx >= nodes.length) {
+            return null;
+        }
+
+        if (nodes[startIdx] == null) {
+            return null;
+        }
+
+        TreeNode root = new TreeNode(nodes[startIdx]);
+        root.left = cursiveBuildTree(nodes, startIdx * 2+1);
+        root.right = cursiveBuildTree(nodes, startIdx * 2 + 2);
+
+        return root;
     }
 }

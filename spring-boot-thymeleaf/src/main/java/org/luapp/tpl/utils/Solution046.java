@@ -1,9 +1,6 @@
 package org.luapp.tpl.utils;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author: 86150
@@ -12,26 +9,58 @@ import java.util.Set;
 public class Solution046 {
 
     public static List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> ret = new ArrayList<>();
-        backTrack(nums, 1, null, null, ret);
-        return ret;
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> output = new ArrayList<>();
+        for (int num : nums) {
+            output.add(num);
+        }
+
+        int n = nums.length;
+        backtrack(n, output, res, 0);
+        return res;
     }
 
-    private static void backTrack(int[] nums, int idx, Set<Integer> visited, List<Integer> singleRet, List<List<Integer>> ret) {
-        if (idx >= nums.length) {
-            ret.add(singleRet);
+    private static void backtrack(int n, List<Integer> output, List<List<Integer>> res, int first) {
+        if (first == n) {
+            res.add(new ArrayList<>(output));
             return;
         }
-        for (int i = 0; i < nums.length; i++) {
-            if (idx == 1) {
-                singleRet = new ArrayList<>();
-                visited = new HashSet<>();
-            }
-            if (!visited.contains(nums[i])) {
-                visited.add(nums[i]);
-                singleRet.add(nums[i]);
-                backTrack(nums, idx + 1, visited, singleRet, ret);
-                visited.remove(nums[i]);
+
+        for (int i = first; i < n; i++) {
+            Collections.swap(output, first, i);
+            backtrack(n, output, res, first + 1);
+            Collections.swap(output, i, first);
+        }
+    }
+
+    public static List<List<Integer>> permute2(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+
+        if (nums == null || nums.length <= 0) {
+            return res;
+        }
+
+        Deque<Integer> path = new ArrayDeque<>();
+        boolean[] used = new boolean[nums.length];
+        dfs(nums, nums.length, 0, path, used, res);
+        return res;
+    }
+
+    private static void dfs(int[] nums, int len, int depth, Deque<Integer> path, boolean[] used, List<List<Integer>> res) {
+        if (depth == len) {
+            res.add(new ArrayList<>(path));
+            return;
+        }
+
+        for (int i = 0; i < len; i++) {
+            if (used[i]) {
+                continue;
+            } else {
+                path.addLast(nums[i]);
+                used[i] = true;
+                dfs(nums, nums.length, depth + 1, path, used, res);
+                used[i] = false;
+                path.removeLast();
             }
         }
     }
@@ -39,5 +68,6 @@ public class Solution046 {
     public static void main(String[] args) {
 
         System.out.println(permute(new int[]{1, 2, 3}));
+        System.out.println(permute2(new int[]{1, 2, 3}));
     }
 }
