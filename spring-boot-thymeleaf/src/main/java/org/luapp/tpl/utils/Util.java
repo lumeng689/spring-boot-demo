@@ -55,9 +55,38 @@ public class Util {
         }
 
         TreeNode root = new TreeNode(nodes[startIdx]);
-        root.left = cursiveBuildTree(nodes, startIdx * 2+1);
+        root.left = cursiveBuildTree(nodes, startIdx * 2 + 1);
         root.right = cursiveBuildTree(nodes, startIdx * 2 + 2);
 
         return root;
+    }
+
+    public static ListNode makeListNode(int[] nums) {
+
+        ListNode dummy = new ListNode(-1);
+        ListNode node = dummy;
+        for (int i = 0; i < nums.length; i++) {
+            node.next = new ListNode(nums[i]);
+            node = node.next;
+        }
+        return dummy.next;
+    }
+
+    public static void printListNode(ListNode head) {
+        int count = 0;
+        while (head != null && count < 100) {
+            System.out.print(head.val + " \t");
+            head = head.next;
+            count++;
+        }
+
+        System.out.println();
+    }
+
+    public static void printIntList(List<Integer> list) {
+        for (int i : list) {
+            System.out.print(i + "\t");
+        }
+        System.out.println();
     }
 }

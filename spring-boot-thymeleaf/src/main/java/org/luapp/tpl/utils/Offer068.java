@@ -6,7 +6,7 @@ import java.util.*;
  * @author: 86150
  * @create: 2021/05/06
  **/
-public class Offer68 {
+public class Offer068 {
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         Deque<TreeNode> list1 = new ArrayDeque<>();
