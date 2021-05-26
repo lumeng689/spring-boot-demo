@@ -90,6 +90,13 @@ public class Util {
         System.out.println();
     }
 
+    public static <T> void printList(List<T> list) {
+        for (T i : list) {
+            System.out.print(i + "\t");
+        }
+        System.out.println();
+    }
+
     public static void printTree(TreeNode buildTree) {
 
     }

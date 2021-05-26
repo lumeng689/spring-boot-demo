@@ -1,9 +1,6 @@
 package org.luapp.tpl.utils;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author: 86150
@@ -13,34 +10,43 @@ public class Solution015 {
 
     public static List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
-        if (nums == null || nums.length <3) {
-            return ans;
+        int n = nums.length;
+        Arrays.sort(nums);
+
+        for (int first = 0; first < n; first++) {
+            if (first > 0 && nums[first] == nums[first - 1]) {
+                continue;
+            }
+
+            int third = n-1;
+            int target = -nums[first];
+
+            for (int second = first+1;second < n;second++) {
+                if (second > first+1 && nums[second] == nums[second-1]) {
+                    continue;
+                }
+
+                while(second < third && nums[second] + nums[third] > target) {
+                    third--;
+                }
+
+                if (second == third) {
+                    break;
+                }
+
+                if (nums[second] + nums[third] == target) {
+                    List<Integer> list = new ArrayList<Integer>();
+                    list.add(nums[first]);
+                    list.add(nums[second]);
+                    list.add(nums[third]);
+                    ans.add(list);
+                }
+            }
         }
 
-        Deque<Integer> path = new ArrayDeque<>();
-        boolean[] visited = new boolean[nums.length];
-        backtrack(nums, 0, 0,visited,  ans, path);
         return ans;
     }
 
-    private static void backtrack(int[] nums, int startIdx, int remain, boolean[] visited, List<List<Integer>> ans, Deque<Integer> path) {
-        if (startIdx == nums.length || path.size() == 3) {
-            if (remain == 0) {
-                ans.add(new ArrayList<>(path));
-            }
-            return;
-        }
-
-        for (int i = startIdx; i < nums.length; i++) {
-            if (!visited[i]) {
-                visited[i] = true;
-                path.addLast(nums[i]);
-                backtrack(nums, startIdx + 1, remain - nums[i],visited, ans, path);
-                path.removeLast();
-                visited[i] = false;
-            }
-        }
-    }
 
     public static void main(String[] args) {
         Util.printNestList(threeSum(new int[]{-1, 0, 1, 2, -1, -4}));

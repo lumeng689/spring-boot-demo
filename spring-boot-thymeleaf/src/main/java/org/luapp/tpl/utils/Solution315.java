@@ -1,6 +1,8 @@
 package org.luapp.tpl.utils;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 /**
@@ -10,6 +12,14 @@ import java.util.List;
 public class Solution315 {
     public static List<Integer> countSmaller(int[] nums) {
         List<Integer> ans = new ArrayList<>();
+
+        Deque<Integer> stack = new ArrayDeque<>();
+
+        int i = nums.length - 1;
+        while (i >= 0) {
+
+        }
+
         return ans;
     }
 

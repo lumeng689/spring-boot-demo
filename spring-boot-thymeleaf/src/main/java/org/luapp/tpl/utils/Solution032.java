@@ -2,13 +2,14 @@ package org.luapp.tpl.utils;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * @author: 86150
  * @create: 2021/05/12
  **/
 public class Solution032 {
-    public static int longestValidParentheses(String s) {
+    public static int longestValidParentheses1(String s) {
 
         char left = '(';
         char right = ')';
@@ -46,9 +47,35 @@ public class Solution032 {
         return max;
     }
 
+    public static int longestValidParentheses2(String s) {
+        int maxAns = 0;
+        Deque<Integer> stack = new LinkedList<>();
+        stack.push(-1);
+
+        for (int i =0;i < s.length();i++) {
+            if (s.charAt(i) == '(') {
+                stack.push(i);
+            }else {
+                stack.pop();
+                if (stack.isEmpty()) {
+                    stack.push(i);
+                } else {
+                    maxAns = Math.max(maxAns, i-stack.peek());
+                }
+            }
+        }
+
+
+        return maxAns;
+    }
+
     public static void main(String[] args) {
-        System.out.println(longestValidParentheses("(()"));
-        System.out.println(longestValidParentheses(")()())"));
-        System.out.println(longestValidParentheses("()(()"));
+        System.out.println(longestValidParentheses1("(()"));
+        System.out.println(longestValidParentheses1(")()())"));
+        System.out.println(longestValidParentheses1("()(()"));
+
+        System.out.println(longestValidParentheses2("(()"));
+        System.out.println(longestValidParentheses2(")()())"));
+        System.out.println(longestValidParentheses2("()(()"));
     }
 }
