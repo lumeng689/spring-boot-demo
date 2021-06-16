@@ -13,6 +13,8 @@ public class Solution315 {
     public static List<Integer> countSmaller(int[] nums) {
         List<Integer> ans = new ArrayList<>();
 
+
+
         Deque<Integer> stack = new ArrayDeque<>();
 
         int i = nums.length - 1;

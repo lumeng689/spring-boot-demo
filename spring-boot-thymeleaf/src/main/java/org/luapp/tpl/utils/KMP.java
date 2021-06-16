@@ -71,8 +71,8 @@ public class KMP {
                 len++;
                 next[i] = len;
                 i++;
-            } else // (pat[i] != pat[len])
-            {
+            } else {
+                // (pat[i] != pat[len])
                 // This is tricky. Consider the example.
                 // AAACAAAA and i = 7. The idea is similar
                 // to search step.
@@ -80,8 +80,8 @@ public class KMP {
                     len = next[len - 1];
                     // Also, note that we do not increment
                     // i here
-                } else // if (len == 0)
-                {
+                } else {
+                    // if (len == 0)
                     next[i] = len;
                     i++;
                 }
