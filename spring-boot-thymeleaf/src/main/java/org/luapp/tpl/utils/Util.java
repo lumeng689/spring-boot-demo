@@ -2,6 +2,7 @@ package org.luapp.tpl.utils;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -99,5 +100,25 @@ public class Util {
 
     public static void printTree(TreeNode buildTree) {
 
+    }
+
+    public static List<List<String>> buildNestListFromArray(String[][] strings) {
+        List<List<String>> ans = new ArrayList<>();
+        for (String[] ss : strings) {
+            List<String> ls = new ArrayList<>();
+            for (String s : ss) {
+                ls.add(s);
+            }
+            ans.add(ls);
+        }
+        return ans;
+    }
+
+    public static List<String> buildListFromArray(String[] strings) {
+        List<String> ans = new ArrayList<>();
+        for (String s : strings) {
+            ans.add(s);
+        }
+        return ans;
     }
 }
